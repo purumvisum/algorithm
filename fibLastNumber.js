@@ -3,15 +3,15 @@ var readline = require('readline');
 process.stdin.setEncoding('utf8');
 var rl = readline.createInterface({
     input: process.stdin,
-      output: process.stdout,
+    output: process.stdout,
     terminal: false
 });
 
 rl.on('line', readLine);
 
 function readLine (line) {
-	  let firstSymbol = parseInt(line.toString().split(' ')[0])
-    var lastNum = fibonacci(firstSymbol)
+    let firstSymbol = parseInt(line.toString().split(' ')[0])
+    let lastNum = fibonacci(firstSymbol)
     console.log(lastNum); 
     process.exit();
 } 
