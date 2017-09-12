@@ -10,3 +10,5 @@ GDC-LCM.js - Greatest Common Divisor & Least Common Multiple (LCM = a*b/GCD(a,b)
 
 changingMoney.js - The goal in this problem is to find the minimum number of coins needed to change the input value
 (an integer) into coins with denominations 1, 5, and 10. ( elementary greedy algorithm )
+
+fractionalKnapsack.js - The goal of this code problem is to implement an algorithm for the fractional knapsack problem.
