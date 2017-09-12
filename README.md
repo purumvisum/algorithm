@@ -7,3 +7,6 @@ GDC-LCM.js - Greatest Common Divisor & Least Common Multiple (a*b/GCD(a,b) && pr
 (node couldn't work with big numbers (ex. 1827116622 251772294 ))
 
 GDC-LCM.js - Greatest Common Divisor & Least Common Multiple (LCM = a*b/GCD(a,b) java could work with big numbers)
+
+changingMoney.js - The goal in this problem is to find the minimum number of coins needed to change the input value
+(an integer) into coins with denominations 1, 5, and 10. ( elementary greedy algorithm )
