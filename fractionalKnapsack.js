@@ -1,40 +1,68 @@
-function fractionalKnapsack() {
+var readline = require('readline');
+
+process.stdin.setEncoding('utf8');
+var rl = readline.createInterface({
+    input: process.stdin,
+      output: process.stdout,
+    terminal: false
+});
+
+rl.on('line', readLine);
+// process.stdin.pipe(require('split')()).on('data', processLine)
+let backpack;
+        let stuff = []
+function readLine (line) {
+    
+    if (line !== "\n") {
+        
+
+        if (!backpack) { 
+             backpack= [parseInt(line.toString().split(' ')[0]), parseInt(line.toString().split(' ')[1])]
+        } else {
+            if (stuff.length < backpack[0]) {
+                stuff.push([parseInt(line.toString().split(' ')[0]), parseInt(line.toString().split(' ')[1])]) 
+            }
+        }    
+    }
+
+    if (stuff.length === backpack[0]) { 
+        // console.log(stuff)
+        fractionalKnapsack(backpack[1],stuff )
+    }
+
+
+
+
+
+
+    // process.exit();
+} 
+
+function fractionalKnapsack(backpackNumber, stuff) {
     var test_input = [
         [60, 10],
         [100, 20],
         [120, 30]
     ];
 
-    //    var test_input = [
-    //     [ 500,  30]
-    // ];
-
-    //  var test_input = [
-    //     [ 500,  30]
-    // ];
-
-   
-
-    let knapsackCapacity = [1, 10]
-
-    let amt_to_take = [];
+    // let knapsackCapacity = [1, 10]
     let  value = [] 
 
     let i=0; 
 
-    for(i = 0; i < test_input.length; i ++) {
-        var weight = test_input[i][0];
-        var benefit = test_input[i][1];
-        test_input[i].push(weight / benefit)
+    for(i = 0; i < stuff.length; i ++) {
+        var weight = stuff[i][0];
+        var benefit = stuff[i][1];
+        stuff[i].push(weight / benefit)
     }
 
-    test_input.sort(function(a, b){
+    stuff.sort(function(a, b){
         return b[2]-a[2]
     })
 
     let count = 0
-    let number = 50
-    let iterator = test_input[Symbol.iterator]();
+    let number = backpackNumber
+    let iterator = stuff[Symbol.iterator]();
     while(true) {
         result = iterator.next();
         
@@ -54,3 +82,5 @@ function fractionalKnapsack() {
 
     console.log(count) 
 }
+
+
