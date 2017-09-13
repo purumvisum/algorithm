@@ -8,14 +8,11 @@ var rl = readline.createInterface({
 });
 
 rl.on('line', readLine);
-// process.stdin.pipe(require('split')()).on('data', processLine)
 let backpack;
         let stuff = []
 function readLine (line) {
     
     if (line !== "\n") {
-        
-
         if (!backpack) { 
              backpack= [parseInt(line.toString().split(' ')[0]), parseInt(line.toString().split(' ')[1])]
         } else {
@@ -26,26 +23,13 @@ function readLine (line) {
     }
 
     if (stuff.length === backpack[0]) { 
-        // console.log(stuff)
         fractionalKnapsack(backpack[1],stuff )
     }
 
-
-
-
-
-
-    // process.exit();
 } 
 
 function fractionalKnapsack(backpackNumber, stuff) {
-    var test_input = [
-        [60, 10],
-        [100, 20],
-        [120, 30]
-    ];
 
-    // let knapsackCapacity = [1, 10]
     let  value = [] 
 
     let i=0; 
@@ -53,7 +37,7 @@ function fractionalKnapsack(backpackNumber, stuff) {
     for(i = 0; i < stuff.length; i ++) {
         var weight = stuff[i][0];
         var benefit = stuff[i][1];
-        stuff[i].push(weight / benefit)
+        stuff[i].push(weight / benefit)  
     }
 
     stuff.sort(function(a, b){
@@ -74,12 +58,9 @@ function fractionalKnapsack(backpackNumber, stuff) {
             number = number - result.value[1];
             count = count + result.value[0];
         } else {
-            count = count + result.value[0] * number / result.value[1]
+            count = parseFloat(count + result.value[0] * number / result.value[1]).toFixed(8)
         }
-
-
     }
-
     console.log(count) 
 }
 
