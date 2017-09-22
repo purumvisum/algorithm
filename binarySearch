@@ -1,0 +1,137 @@
+var readline = require('readline');
+
+process.stdin.setEncoding('utf8');
+var rl = readline.createInterface({
+    input: process.stdin,
+      output: process.stdout,
+    terminal: false
+});
+
+rl.on('line', readLine);
+ let originElementsNumber;
+ let originalArray = [] 
+
+let secondArrayNumber;
+let searchElementslArray = [] 
+
+function readLine (line) { 
+
+   
+
+//  if (line !== "\n") {
+//     originElementsNumber = parseInt(line.toString().split(' ')[0])
+
+//     for (let i = 1; i <= originElementsNumber; i++) {
+//         originalArray.push( parseInt(line.toString().split(' ')[i]) )
+//     }
+
+//     secondArrayNumber = parseInt(line.toString().split(' ')[originElementsNumber + 1])
+
+//      // secondArrayNumber = parseInt(line.toString().split(' ')[0])
+//      for (let i = originElementsNumber + 2 ; i <= originElementsNumber + 1 + secondArrayNumber; i++) {
+//         searchElementslArray.push( parseInt(line.toString().split(' ')[i]) )
+//     }
+// } else {
+     if (originalArray.length !== originElementsNumber) {
+        originElementsNumber = parseInt(line.toString().split(' ')[0])
+
+        for (let i = 1; i <= originElementsNumber; i++) {
+            originalArray.push( parseInt(line.toString().split(' ')[i]) )
+        }
+    } else {
+        secondArrayNumber = parseInt(line.toString().split(' ')[0])
+         for (let i = 1; i <= secondArrayNumber; i++) {
+            searchElementslArray.push( parseInt(line.toString().split(' ')[i]) )
+        }
+    }
+
+    
+
+    // console.log(sortedArray)
+// }
+
+    // console.log(secondArrayNumber)
+
+    //  console.log(originalArray)  
+    //  console.log(searchElementslArray)  
+
+
+    if (originalArray.length === originElementsNumber && searchElementslArray.length === secondArrayNumber) {
+        var sortedArray = quickSort(originalArray);
+        let array = searchElementslArray.map(function(item) {
+           process.stdout.write(binaryIndexOf(sortedArray, item).toString() + ' ');
+        });
+        console.log('\n') 
+        process.exit();
+    }
+} 
+
+
+function quickSort(items, left, right) {
+    var index;
+    if (items.length > 1) {
+        left = typeof left != "number" ? 0 : left;
+        right = typeof right != "number" ? items.length - 1 : right;
+        index = partition(items, left, right);
+        if (left < index - 1) {
+            quickSort(items, left, index - 1);
+        }
+        if (index < right) {
+            quickSort(items, index, right);
+        }
+    }
+    return items;
+}
+
+function partition(items, left, right) {
+    var pivot   = items[Math.floor((right + left) / 2)],
+        i       = left,
+        j       = right;
+
+    while (i <= j) {
+        while (items[i] < pivot) {
+            i++;
+        }
+        while (items[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            swap(items, i, j);
+            i++;
+            j--;
+        }
+    }
+    return i;
+}
+
+function swap(items, firstIndex, secondIndex){
+    const temp = items[firstIndex];
+    items[firstIndex] = items[secondIndex];
+    items[secondIndex] = temp;
+}
+
+function binaryIndexOf(firstArray, searchElement) {
+    'use strict';
+
+    var minIndex = 0;
+    var maxIndex = firstArray.length - 1;
+    var currentIndex;
+    var currentElement;
+ 
+    while (minIndex <= maxIndex) {
+        currentIndex = (minIndex + maxIndex) / 2 | 0;
+        currentElement = firstArray[currentIndex];
+ 
+        if (currentElement < searchElement) {
+            minIndex = currentIndex + 1;
+        }
+        else if (currentElement > searchElement) {
+            maxIndex = currentIndex - 1;
+        }
+        else {
+            return currentIndex;
+        }
+    }
+ 
+    return -1;
+}
