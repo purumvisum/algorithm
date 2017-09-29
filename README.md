@@ -12,3 +12,6 @@ changingMoney.js - The goal in this problem is to find the minimum number of coi
 (an integer) into coins with denominations 1, 5, and 10. ( elementary greedy algorithm )
 
 fractionalKnapsack.js - The goal of this code problem is to implement an algorithm for the fractional knapsack problem.
+
+editingDistance.js - The goal of this problem is to implement the algorithm for computing the edit distance between two
+strings.
